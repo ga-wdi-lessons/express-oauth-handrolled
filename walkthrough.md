@@ -41,7 +41,7 @@ STOP (5 / 15)
 
 Your goal:
 
-When you go to `/login/twitter` you're redirected to Twitter.
+When you go to `/login/twitter` you're redirected to Twitter, then you're redirected to `127.0.0.1:3001/login/twitter/callback?oauth_token=aBunchOfStuff`, and it says: "Cannot GET /login/twitter/callback?..."
 
 ## Redirects to Twitter sign-in page
 

@@ -60,6 +60,13 @@ https://apps.twitter.com/
 
 ## Walkthrough
 
+```
+git clone git@github.com:ga-wdi-exercises/whenpresident.git
+cd whenpresident
+git checkout 88a8de4
+git checkout -b twitter-starter
+```
+
 This uses [WhenPresident](https://github.com/ga-wdi-exercises/whenpresident).
 
 ### [Go to walkthrough.md](walkthrough.md)

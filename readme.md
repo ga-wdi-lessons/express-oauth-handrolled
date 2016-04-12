@@ -40,36 +40,51 @@ There are several versions and types of OAuth. We'll be using "three-legged" OAu
 
 ![#](images/oauth.png)
 
-## Registering a Twitter app
+## Registering your app with Twitter
 
-Folllow the link below, click "Create New App", and follow the steps.
+To use Twitter's OAuth, we need to register our application.  This lets twitter control access and let's us provide the callback endpoint that Twitter will use to speak to our app.
 
-### Note:
+1. Start registration:
+  - https://apps.twitter.com/
+  - Click "Create New App"
+- Fill in the information for your WhenPresident app:
+  - **Name:** of your app (must be unique across apps registered on Twitter)
+  - **Description:** of "your" app
+  - **Website:** Use "http://example.com" as a fake website
+  - **Callback URL:** "http://127.0.0.1:3001/login/twitter/callback"
+  - "Name", "Description", and "Webpage" do not matter much, for an in-class exercise.  They are very important for a production app.
+  - we will be creating the endpoint, in our app, for the Callback URL.
+  - `127.0.0.1:3001` is an alias for `localhost:3001`. External APIs often don't like to work with `localhost`, but accept `127.0.0.1` just fine.
+- Set Permissions to read-only
+  - Click the **"Permissions"** tab, select "read only", and press "Update Settings".
+- We will need the Keys for this app
+  - Click on the **"Keys and Access Tokens"** tab
+  - We will be using the **"Consumer Key"** and **"Consumer Secret"** soon.
 
-- The **Name**, **Description**, and **Website** are unimportant. Use whatever you want.
-- The **Callback URL** should be `http://127.0.0.1:3001/login/twitter/callback`. `127.0.0.1:3001` is an alias for `localhost:3001`. External APIs often don't like to work with `localhost`, but accept `127.0.0.1` just fine.
-  - `3001` and `login/twitter/callback` are just what is used in the walkthrough. You could use any port number and path.
+## Today's Starter Code
 
-### To start:
+1. Get the latest code: https://github.com/ga-wdi-exercises/whenpresident.
 
-https://apps.twitter.com/
+  ```
+  $ cd whenpresident
+  ```
+- Switch to the commit that has our starter code (you will be in a *detached head* state, until you create your branch):
+  ```
+  $ git checkout 88a8de4
+  $ git checkout -b MyName-twitter-oauth
+  ```
+- Install dependencies via:
+  ```
+  $ npm install
+  ```
+- Verify that WhenPresident works, by starting your server and checking in the browser:
+  ```
+  $ nodemon
+  ```
+  Visit: [http:/localhost:3001](http:/localhost:3001)
 
-### Then:
 
-- Click on the "Keys and Access Tokens" tab and copy down the "Consumer Key" and "Consumer Secret"
-
-## Walkthrough
-
-```
-git clone git@github.com:ga-wdi-exercises/whenpresident.git
-cd whenpresident
-git checkout 88a8de4
-git checkout -b twitter-starter
-```
-
-This uses [WhenPresident](https://github.com/ga-wdi-exercises/whenpresident).
-
-### [Go to walkthrough.md](walkthrough.md)
+### It works? [Go to walkthrough.md](walkthrough.md)
 
 ## References
 
@@ -77,5 +92,6 @@ This uses [WhenPresident](https://github.com/ga-wdi-exercises/whenpresident).
   - [Our own Passport lesson plan](https://github.com/ga-wdi-lessons/express-passport)
 - [OAuth Bible](http://oauthbible.com/)
 - [Request Talking to Twitter](https://github.com/request/request#oauth-signing), from Request's own Github page
+- [Twitter's OAuth Docs](https://dev.twitter.com/oauth/overview/introduction)
 - [Coinbase's API](https://developers.coinbase.com/docs/wallet/coinbase-connect/integrating), on which Robin used to work
 - Screencasts

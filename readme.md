@@ -69,15 +69,18 @@ To use Twitter's OAuth, we need to register our application.  This lets twitter 
   $ cd whenpresident
   ```
 - Switch to the commit that has our starter code (you will be in a *detached head* state, until you create your branch):
+  
   ```
   $ git checkout 88a8de4
   $ git checkout -b MyName-twitter-oauth
   ```
 - Install dependencies via:
+  
   ```
   $ npm install
   ```
 - Verify that WhenPresident works, by starting your server and checking in the browser:
+  
   ```
   $ nodemon
   ```

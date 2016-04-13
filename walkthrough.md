@@ -1,4 +1,4 @@
-# 1. Get set up (10 / 10)
+# 1. Get set up (45 min)
 
 Your goal:
 
@@ -19,7 +19,12 @@ Your goal:
 - Why is it necessary to `gitignore` environment variables?
 - What does the `process` variable do?
 
-![#](images/env-sample-json.png)
+```
+// env.json
+{
+  "session_secret": "a long random string",
+}
+```
 
 ![#](images/env-gitignore.png)
 
@@ -29,15 +34,23 @@ Your goal:
 
 - What's the difference between a "key" and a "secret"?
 
-![#](images/twitter-env-sample.png)
+```
+// env.json
+{
+  "session_secret": "a long random string",
+  "t_callback_url": "http://127.0.0.1:3001/login/twitter/callback",
+  "t_consumer_key": "provided by twitter",
+  "t_consumer_secret": "provided by twitter"
+}
+```
 
 ![#](images/twitter-env-require.png)
 
------
-STOP (5 / 15)
------
 
-# 2. Get a request token from Twitter and redirect the user (10 / 25)
+# Break (10 min)
+
+
+# 2. Get a request token from Twitter and redirect the user (30 min)
 
 Your goal:
 
@@ -54,10 +67,10 @@ When you go to `/login/twitter` you're redirected to Twitter, then you're redire
 ![#](images/twitter-sign-in.png)
 
 -----
-STOP (5 / 30)
+STOP
 -----
 
-# 3. Get tokens from Twitter (10 / 40)
+# 3. Get tokens from Twitter (20 min)
 
 Your goal:
 
@@ -71,10 +84,10 @@ After being redirected back to your app, JSON containing tokens and user informa
 ![#](images/twitter-auth-complete.png)
 
 -----
-STOP (5 / 45)
+STOP
 -----
 
-# 4. Query the API (10 / 55)
+# 4. Query the API (20 min)
 
 Your goal:
 
@@ -90,23 +103,22 @@ If you go to `/apitest/ga_dc` you should see GA_DC's Twitter account info!
 
 ![#](images/twitter-test-route.png)
 
------
-STOP (15 / 70)
------
 
-# 5. Each person who "signs up" becomes a Candidate (10 / 80)
+# Bonus:
+
+## 5. Each person who "signs up" becomes a Candidate
 
 Your goal:
 
 When you sign in, you've been added to the Candidates index.
 
-## Removed candidate create form
+### Removed candidate create form
 
 ![#](images/rm-candidate-form.png)
 
 ![#](images/rm-candidate-route.png)
 
-## Saves candidate to database
+### Saves candidate to database
 
 - Why use `findOneAndUpdate`? Why not just `create`?
 - How should you choose which user data to actually save to the database?
@@ -115,16 +127,16 @@ When you sign in, you've been added to the Candidates index.
 ![#](images/db-save-candidate.png)
 
 -----
-STOP (5 / 85)
+STOP
 -----
 
-# 6. Add a nav bar (10 / 95)
+## 6. Add a nav bar
 
 Your goal:
 
 When you sign in you're greeted with your smiling face and username, and there's a different user experience for those signed in versus those signed out.
 
-## Displays username and picture
+### Displays username and picture
 
 - Why is `app.use` called *middle*ware?
 - What's the difference between `res.locals` and `req.session`?
@@ -139,16 +151,16 @@ When you sign in you're greeted with your smiling face and username, and there's
 ![#](images/add-signout.png)
 
 -----
-STOP (5 / 100)
+STOP
 -----
 
-# 7. Tidy up (10 / 110)
+## 7. Tidy up
 
 Your goal:
 
 Move all the Twitter logic to a separate file without affecting your app's functionality.
 
-## Moved Twitter stuff to separate file
+### Moved Twitter stuff to separate file
 
 - What's the advantage of moving the Twitter stuff to a separate file?
 - What is the `module.exports` in this file?
@@ -160,16 +172,16 @@ Move all the Twitter logic to a separate file without affecting your app's funct
 ![#](images/separate-files.png)
 
 -----
-STOP (5 / 115)
+STOP
 -----
 
-# 8. Deploy (10 / 125)
+## 8. Deploy
 
 Your goal:
 
 Users can access your app on Heroku, but can only change their own candidacies.
 
-## Can edit/delete only if current user
+### Can edit/delete only if current user
 
 - Not shown are the changes to `views/candidates-show.hbs`. Nothing needs to be deleted from that file -- some things just need to be inserted (and then re-indented). Can you figure it out? Keep in mind the title of this step!
 

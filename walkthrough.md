@@ -61,6 +61,8 @@ $ git checkout -b auth-starter
 
 **Note**: There's a *lot* of opportunity for typos in this walkthrough. There are several particularly complicated pieces of code that are mostly just boilerplate. Because typing them out doesn't really "teach" much, they have been included as plain text so that you can copy and paste them.
 
+**Note**: A easily-testable goal is listed for each of the OAuth steps. Achieving the goal means you're on the right track! Your goal up to the first "STOP" is just to be able to run `nodemon` without errors.
+
 # Added sessions
 
 > [a308a41](https://www.github.com/ga-wdi-exercises/whenpresident/commit/a308a41)
@@ -141,7 +143,7 @@ process.env.t_consumer_secret = env.t_consumer_secret;
 
 ## This is OAuth's 1st "Leg"
 
-Your goal: When you go to `/login/twitter` you end up with some promising-looking JSON.
+#### Your goal: When you go to `/login/twitter` you end up with some promising-looking JSON.
 
 ### [Gets request token from Twitter: `package.json`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/0efb248/package.json)
 ![Gets request token from Twitter, package.json](_DIFFSHOTS/gets-request-token-from-twitter.package-json.png)
@@ -166,7 +168,7 @@ var postData = {
 
 ## This is OAuth's 2nd Leg
 
-Your goal: When you go to `/login/twitter` you're redirected to a Twitter "Sign-in" or "Authorize" page.
+#### Your goal: When you go to `/login/twitter` you're redirected to a Twitter "Sign-in" or "Authorize" page.
 
 - What two new modules need to be installed in this step?
 - What's a "querystring"?
@@ -189,11 +191,15 @@ var querystring = qstring.stringify({
 "https://api.twitter.com/oauth/authenticate?"
 ```
 
+-----
+# STOP
+-----
+
 # Saves OAuth tokens via sessions; added logout button
 
 > [4715a7a](https://www.github.com/ga-wdi-exercises/whenpresident/commit/4715a7a)
 
-Your goal: When you go to `/login/twitter` you're redirected to Twitter, then redirected back to a page that shows a bunch of JSON.
+#### Your goal: When you go to `/login/twitter` you're redirected to Twitter, then redirected back to a page that shows a bunch of JSON.
 
 Also, if you check out `mongo`, you'll now see a `sessions` collection.
 
@@ -216,7 +222,7 @@ req.session.temp_secret = response.oauth_token_secret;
 
 ## This is OAuth's 3rd Leg
 
-Your goal: When you're redirected back from Twitter, you get some JSON that contains your Twitter screen name.
+#### Your goal: When you're redirected back from Twitter, you get some JSON that contains your Twitter screen name.
 
 - What is `req.query`? How is it different from `req.params`?
 
@@ -236,11 +242,15 @@ var postData = {
 };
 ```
 
+-----
+# STOP
+-----
+
 # Saves Twitter account info to sessions
 
 > [9971d27](https://www.github.com/ga-wdi-exercises/whenpresident/commit/9971d27)
 
-Your goal: If you look at the `sessions` collection in `mongo`, you'll see `t_user_id`, `t_screen_name`, and `t_oauth_data` fields.
+#### Your goal: If you look at the `sessions` collection in `mongo`, you'll see `t_user_id`, `t_screen_name`, and `t_oauth_data` fields.
 
 - Why is all this OAuth information being saved to a single `req.session.t_oauth` object?
 
@@ -262,7 +272,7 @@ req.session.t_oauth_data        = {
 
 > [6255557](https://www.github.com/ga-wdi-exercises/whenpresident/commit/6255557)
 
-Your goal: When you're redirected back from Twitter, you'll see a lot of JSON that contains information about your Twitter account, including your profile picture.
+#### Your goal: When you're redirected back from Twitter, you'll see a lot of JSON that contains information about your Twitter account, including your profile picture.
 
 See the bonus below!
 
@@ -290,6 +300,10 @@ Make a GET request to:
 
 - `screen_name`: The screen name of any Twitter user (try `GA_DC`!)
 - `count`: How many Tweets you want back. (I recommend `5` or fewer, or it takes a long time.)
+
+-----
+# STOP
+-----
 
 # Saves or updates Twitter user as a Candidate
 
@@ -328,6 +342,10 @@ var search_params   = {
 
 ### [Makes current_user accessible in views: `views/layout-main.hbs`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/a51aeea/views/layout-main.hbs)
 ![Makes current_user accessible in views, views/layout-main.hbs](_DIFFSHOTS/makes-currentuser-accessible-in-views.views-layout-main-hbs.png)
+
+-----
+# STOP
+-----
 
 # Candidates can be created only by signing up
 
@@ -371,6 +389,10 @@ var search_params   = {
 ### [Delete and update forms show up only for current user: `public/js/app.js`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/b0cc736/public/js/app.js)
 ![Delete and update forms show up only for current user, public/js/app.js](_DIFFSHOTS/delete-and-update-forms-show-up-only-for-current-user.public-js-app-js.png)
 
+-----
+# STOP
+-----
+
 # Looks for env.json only in development
 
 > [982cff4](https://www.github.com/ga-wdi-exercises/whenpresident/commit/982cff4)
@@ -380,4 +402,4 @@ var search_params   = {
 ### [Looks for env.json only in development: `index.js`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/982cff4/index.js)
 ![Looks for env.json only in development, index.js](_DIFFSHOTS/looks-for-envjson-only-in-development.index-js.png)
 
-
+# Deploy!

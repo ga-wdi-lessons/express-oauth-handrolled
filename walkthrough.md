@@ -67,10 +67,25 @@ $ git checkout -b auth-starter
 
 > [a308a41](https://www.github.com/ga-wdi-exercises/whenpresident/commit/a308a41)
 
-- What is a session variable? Why is it called a "session" variable?
-- What are the two new things being `require`d in this app? How do you install them?
-- What does a session "secret" do?
-- How does `connect-mongo` relate to sessions?
+<details>
+  <summary>What is a session variable? Why is it called a "session" variable?</summary>
+  <blockquote>A session variable is a piece of data that's associated with a specific instance of a specific computer accessing your site. If Alice and Bob are both accessing your site, they both have their own "sessions".</blockquote>
+</details>
+
+<details>
+  <summary>What are the two new things being `require`d in this app? How do you install them?</summary>
+  <blockquote>`express-session` and `connect-mongo`. You install them with `npm install --save express-session` and `npm install --save connect-mongo`.</blockquote>
+</details>
+
+<details>
+  <summary>What does a session "secret" do?</summary>
+  <blockquote>Sessions are encrypted. A "secret" is some "junk" data added to your *real* data during the encryption process to make it harder to decrypt.</blockquote>
+</details>
+
+<details>
+  <summary>How does `connect-mongo` relate to sessions?</summary>
+  <blockquote>Session data has to be stored somewhere. There are several options, one of which is to store it in a database. `connect-mongo` enables us to store session data in the Mongo database.</blockquote>
+</details>
 
 ### [Added sessions: `package.json`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/a308a41/package.json)
 ![Added sessions, package.json](_DIFFSHOTS/added-sessions.package-json.png)
@@ -93,9 +108,25 @@ app.use(session({
 
 > [34e2e66](https://www.github.com/ga-wdi-exercises/whenpresident/commit/34e2e66)
 
-- What is an environment variable? Why is it called an "environment" variable?
-- Why is it necessary to `gitignore` environment variables?
-- What does the `process` variable do?
+<details>
+  <summary>What is an environment variable? Why is it called an "environment" variable?</summary>
+  <blockquote>An environment variable is a piece of data associated with the computer that's running your server. The computer on which the server is running is considered the "environment". 3 computers are 3 different environments.</blockquote>
+</details>
+
+<details>
+  <summary>Why do we use environment variables?</summary>
+  <blockquote>Because the data for the variables is specific to one single environment. You're not going to share environment variables with someone else: you won't include them on Github, for example. Environment variables are therefore great for data that needs to be kept secure, like API keys or encryption data.</blockquote>
+</details>
+
+<details>
+  <summary>Why is it necessary to `gitignore` environment variables?</summary>
+  <blockquote>To prevent environment variables from being pushed to Github, where hackers could see them.</blockquote>
+</details>
+
+<details>
+  <summary>What does the `process` variable do?</summary>
+  <blockquote>It stores functions and data relevant to the current "process", like environment variables. A process is a program that is running on your computer. The process in this case is this particular instance of Node running.</blockquote>
+</details>
 
 ### [Added env.json: `.gitignore`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/34e2e66/.gitignore)
 ![Added env.json, .gitignore](_DIFFSHOTS/added-envjson.-gitignore.png)
@@ -110,7 +141,10 @@ app.use(session({
 
 > [5e81578](https://www.github.com/ga-wdi-exercises/whenpresident/commit/5e81578)
 
-- What's the difference between a "key" and a "secret"?
+<details>
+  <summary>What's the difference between a "key" and a "secret"?</summary>
+  <blockquote>The same as the difference between a username and a password. You need both to change data or access private data. But you can use the username (the "key") to let other people know you are who you say you are.</blockquote>
+</details>
 
 ### [Added Twitter environment variables: `env.json`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/5e81578/env.json)
 ![Added Twitter environment variables, env.json](_DIFFSHOTS/added-twitter-environment-variables.env-json.png)
@@ -162,6 +196,16 @@ var postData = {
 };
 ```
 
+<details>
+  <summary>Request is a Node module that is similar to which Ruby gem?</summary>
+  <blockquote>It's similar to HTTParty. You can use it to let your server **make** HTTP requests, rather than just **respond** to HTTP requests.</blockquote>
+</details>
+
+<details>
+  <summary>What are the two arguments in a `request` callback?</summary>
+  <blockquote>Any errors returned by the request, and then the data returned by the request.</blockquote>
+</details>
+
 # Redirects to Twitter
 
 > [2bd11a3](https://www.github.com/ga-wdi-exercises/whenpresident/commit/2bd11a3)
@@ -170,11 +214,15 @@ var postData = {
 
 #### Your goal: When you go to `/login/twitter` you're redirected to a Twitter "Sign-in" or "Authorize" page.
 
-- What two new modules need to be installed in this step?
-- What's a "querystring"?
-- What does `qstring.parse` do?
-- What are the two arguments in a `request` callback?
-- Where does `req.session` "physically" save data?
+<details>
+  <summary>What's a "querystring"?</summary>
+  <blockquote>A piece at the end of a URL that contains additional parameters. It always begins with a `?` and consists of a bunch of key/value pairs separated by `&`. For example: http://google.com/search?q=querystrings&ie=UTF8</blockquote>
+</details>
+
+<details>
+  <summary>Where does `req.session` "physically" save data?</summary>
+  <blockquote>Since we're using `connect-mongo`, it saves it in the Mongo database.</blockquote>
+</details>
 
 ### [Redirects to Twitter: `package.json`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/2bd11a3/package.json)
 ![Redirects to Twitter, package.json](_DIFFSHOTS/redirects-to-twitter.package-json.png)
@@ -191,6 +239,11 @@ var querystring = qstring.stringify({
 "https://api.twitter.com/oauth/authenticate?"
 ```
 
+<details>
+  <summary>What does `qstring.parse` do?</summary>
+  <blockquote>It turns a querystring into a Javascript object literal.</blockquote>
+</details>
+
 -----
 # STOP
 -----
@@ -203,7 +256,10 @@ var querystring = qstring.stringify({
 
 Also, if you check out `mongo`, you'll now see a `sessions` collection.
 
-- What's the relation between `app.get("/login/twitter/callback")` and the `t_callback_url` we've specified?
+<details>
+  <summary>What's the relation between `app.get("/login/twitter/callback")` and the `t_callback_url` we've specified?</summary>
+  <blockquote>The `t_callback_url` tells Twitter to which URL it should send users once they've signed in. `app.get` is the "receiving-end" of that URL.</blockquote>
+</details>
 
 ### [Saves OAuth tokens via sessions; added logout button: `index.js`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/4715a7a/index.js)
 ![Saves OAuth tokens via sessions; added logout button, index.js](_DIFFSHOTS/saves-oauth-tokens-via-sessions-added-logout-button.index-js.png)
@@ -224,8 +280,6 @@ req.session.temp_secret = response.oauth_token_secret;
 
 #### Your goal: When you're redirected back from Twitter, you get some JSON that contains your Twitter screen name.
 
-- What is `req.query`? How is it different from `req.params`?
-
 ### [Gets Twitter permanent oauth_tokens: `index.js`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/b2eb0f5/index.js)
 ![Gets Twitter permanent oauth_tokens, index.js](_DIFFSHOTS/gets-twitter-permanent-oauthtokens.index-js.png)
 
@@ -242,6 +296,11 @@ var postData = {
 };
 ```
 
+<details>
+  <summary>What is `req.query`? How is it different from `req.params`?</summary>
+  <blockquote>`req.query` is the data in the querystring at the end of the URL. `req.params` are the variables included in the URL itself that you defined when you set up the route, e.g. `app.get("/candidate/:name")`.</blockquote>
+</details>
+
 -----
 # STOP
 -----
@@ -251,8 +310,6 @@ var postData = {
 > [9971d27](https://www.github.com/ga-wdi-exercises/whenpresident/commit/9971d27)
 
 #### Your goal: If you look at the `sessions` collection in `mongo`, you'll see `t_user_id`, `t_screen_name`, and `t_oauth_data` fields.
-
-- Why is all this OAuth information being saved to a single `req.session.t_oauth` object?
 
 ### [Saves Twitter account info to sessions: `index.js`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/9971d27/index.js)
 ![Saves Twitter account info to sessions, index.js](_DIFFSHOTS/saves-twitter-account-info-to-sessions.index-js.png)
@@ -267,6 +324,11 @@ req.session.t_oauth_data        = {
   consumer_secret:  process.env.t_consumer_secret
 };
 ```
+
+<details>
+  <summary>Why is all this OAuth information being saved to a single `req.session.t_oauth` object?</summary>
+  <blockquote>It contains the data we'll need to send with every API request.</blockquote>
+</details>
 
 # Gets Twitter info about current user
 
@@ -309,8 +371,10 @@ Make a GET request to:
 
 > [9ef5b75](https://www.github.com/ga-wdi-exercises/whenpresident/commit/9ef5b75)
 
-- Why use `findOneAndUpdate`? Why not just `create`?
-- How should you choose which user data to actually save to the database?
+<details>
+  <summary>How should you choose which data returned from the Twitter API to actually save to the database?</summary>
+  <blockquote>Saving all of it is do-able, but inefficient. I would recommend saving the things you're going to use in the rest of your program the most frequently: the screen name and the photo URL in this case.</blockquote>
+</details>
 
 ### [Saves or updates Twitter user as a Candidate: `db/connection.js`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/9ef5b75/db/connection.js)
 ![Saves or updates Twitter user as a Candidate, db/connection.js](_DIFFSHOTS/saves-or-updates-twitter-user-as-a-candidate.db-connection-js.png)
@@ -329,19 +393,35 @@ var search_params   = {
 };
 ```
 
+<details>
+  <summary>Why use `findOneAndUpdate`? Why not just `create`?</summary>
+  <blockquote>That would create a new User for the person signing in every time they sign in.</blockquote>
+</details>
+
 # Makes current_user accessible in views
 
 > [a51aeea](https://www.github.com/ga-wdi-exercises/whenpresident/commit/a51aeea)
-
-- Why is `app.use` called "middle"ware?
-- What's the difference between `res.locals` and `req.session`?
-- What's the purpose of the `next` function?
 
 ### [Makes current_user accessible in views: `index.js`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/a51aeea/index.js)
 ![Makes current_user accessible in views, index.js](_DIFFSHOTS/makes-currentuser-accessible-in-views.index-js.png)
 
 ### [Makes current_user accessible in views: `views/layout-main.hbs`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/a51aeea/views/layout-main.hbs)
 ![Makes current_user accessible in views, views/layout-main.hbs](_DIFFSHOTS/makes-currentuser-accessible-in-views.views-layout-main-hbs.png)
+
+<details>
+  <summary>Why is `app.use` called "middle"ware?</summary>
+  <blockquote>Because it happens in the "middle" of requests. The user goes to a URL, then Express runs its middleware, then Express routes the request.</blockquote>
+</details>
+
+<details>
+  <summary>What's the difference between `res.locals` and `req.session`?</summary>
+  <blockquote>`res.locals` makes things available in views. `req.session` saves it as a session variable</blockquote>
+</details>
+
+<details>
+  <summary>What's the purpose of the `next` function?</summary>
+  <blockquote>It tells Express when to move on from a particular piece of middleware. Without it, Express will just hang forever. It's necessary because you can put `next()` inside callback functions. It lets you say, "Hey, Express, only move on from this piece of middleware once this asynchronous thing has compelted."</blockquote>
+</details>
 
 -----
 # STOP
@@ -367,6 +447,16 @@ var search_params   = {
 
 > [da868c8](https://www.github.com/ga-wdi-exercises/whenpresident/commit/da868c8)
 
+<details>
+  <summary>Why is `req.session.destroy()` necessary here?</summary>
+  <blockquote>Without it Express will think the deleted user is still logged in.</blockquote>
+</details>
+
+<details>
+  <summary>What does `target="_top"` in an `<a>` do? (What happens if you don't have it?)</summary>
+  <blockquote>In Angular apps, clicking on links doesn't reload the page. `target="_top"` forces the page to reload.</blockquote>
+</details>
+
 ### [Candidates can delete and update themselves only: `index.js`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/da868c8/index.js)
 ![Candidates can delete and update themselves only, index.js](_DIFFSHOTS/candidates-can-delete-and-update-themselves-only.index-js.png)
 
@@ -383,11 +473,11 @@ var search_params   = {
 ### [Delete and update forms show up only for current user: `index.js`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/b0cc736/index.js)
 ![Delete and update forms show up only for current user, index.js](_DIFFSHOTS/delete-and-update-forms-show-up-only-for-current-user.index-js.png)
 
-### [Delete and update forms show up only for current user: `public/html/candidates-show.html`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/b0cc736/public/html/candidates-show.html)
-![Delete and update forms show up only for current user, public/html/candidates-show.html](_DIFFSHOTS/delete-and-update-forms-show-up-only-for-current-user.public-html-candidates-show-html.png)
-
 ### [Delete and update forms show up only for current user: `public/js/app.js`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/b0cc736/public/js/app.js)
 ![Delete and update forms show up only for current user, public/js/app.js](_DIFFSHOTS/delete-and-update-forms-show-up-only-for-current-user.public-js-app-js.png)
+
+### [Delete and update forms show up only for current user: `public/html/candidates-show.html`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/b0cc736/public/html/candidates-show.html)
+![Delete and update forms show up only for current user, public/html/candidates-show.html](_DIFFSHOTS/delete-and-update-forms-show-up-only-for-current-user.public-html-candidates-show-html.png)
 
 -----
 # STOP
@@ -397,9 +487,23 @@ var search_params   = {
 
 > [982cff4](https://www.github.com/ga-wdi-exercises/whenpresident/commit/982cff4)
 
-- You don't have your `env.json` on Heroku. How else can you set environment variables on Heroku?
-
 ### [Looks for env.json only in development: `index.js`](https://www.github.com/ga-wdi-exercises/whenpresident/blob/982cff4/index.js)
 ![Looks for env.json only in development, index.js](_DIFFSHOTS/looks-for-envjson-only-in-development.index-js.png)
 
 # Deploy!
+
+<details>
+  <summary>What will you need to change your `t_callback_url` to in order for this to work?</summary>
+  <blockquote>Something like https://everlasting-glade-123456.herokuapp.com/login/twitter/callback</blockquote>
+</details>
+
+<details>
+  <summary>You don't have your `env.json` on Heroku. How else can you set environment variables on Heroku?</summary>
+  <pre>
+$ heroku config:set MONGOLAB_URL="mongodb://test:testerson@ds123456.mlab.com:12345/some_database"
+$ heroku config:set session_secret="some random string"
+$ heroku config:set t_callback_url="https://everlasting-glade-123456.herokuapp.com/login/twitter/callback"
+$ heroku config:set t_consumer_key="abc1234"
+$ heroku config:set t_consumer_secret="abcdef123456"  
+  </pre>
+</details>

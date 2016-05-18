@@ -61,33 +61,7 @@ To use Twitter's OAuth, we need to register our application.  This lets twitter 
   - Click on the **"Keys and Access Tokens"** tab
   - We will be using the **"Consumer Key"** and **"Consumer Secret"** soon.
 
-## Today's Starter Code
-
-1. Get the latest code: https://github.com/ga-wdi-exercises/whenpresident.
-
-  ```
-  $ cd whenpresident
-  ```
-- Switch to the commit that has our starter code (you will be in a *detached head* state, until you create your branch):
-
-  ```
-  $ git checkout 88a8de4
-  $ git checkout -b MyName-twitter-oauth
-  ```
-- Install dependencies via:
-
-  ```
-  $ npm install
-  ```
-- Verify that WhenPresident works, by starting your server and checking in the browser:
-
-  ```
-  $ nodemon
-  ```
-  Visit: [http:/localhost:3001](http:/localhost:3001)
-
-
-### It works? [Go to walkthrough.md](walkthrough.md)
+## [Go to walkthrough.md](walkthrough.md)
 
 ## References
 

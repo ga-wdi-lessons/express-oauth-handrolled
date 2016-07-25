@@ -71,4 +71,7 @@ To use Twitter's OAuth, we need to register our application.  This lets twitter 
 - [Request Talking to Twitter](https://github.com/request/request#oauth-signing), from Request's own Github page
 - [Twitter's OAuth Docs](https://dev.twitter.com/oauth/overview/introduction)
 - [Coinbase's API](https://developers.coinbase.com/docs/wallet/coinbase-connect/integrating), on which Robin used to work
-- Screencasts
+- Screencasts using Passport Oauth
+  - [Part 1](https://www.youtube.com/watch?v=DtfKlypcD_8&index=82&list=PLae1he6d1WImFXtLgPt7MDAx6k6iP59EW)
+  - [Part 2](https://www.youtube.com/watch?v=-wsS2oZh4rk&index=83&list=PLae1he6d1WImFXtLgPt7MDAx6k6iP59EW)
+  - [Part 3](https://www.youtube.com/watch?v=GWuS9TShHHg&index=84&list=PLae1he6d1WImFXtLgPt7MDAx6k6iP59EW)
